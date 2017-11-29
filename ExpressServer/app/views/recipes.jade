@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  script(src="/javascripts/recipes.js")
+  div(id="menu")
+    h1= title
+    p Ingredients
+    input(type="text" id="ingredients")
+    p Spices
+    input(type="text" id="spices")
+    br
+    br
+    button(onclick = "handleSubmit()") Submit
+  div(id="display")
