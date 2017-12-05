@@ -6,7 +6,7 @@ function handleSubmit(){
     query.ingredients = in_ingredients.value;
     query.spices = in_spices.value;
 
-    if(query.spices != ''  || query.in_ingredients != ''){
+    if(query.spices != ""  || query.in_ingredients != ""){
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if(xhr.readyState == 4 && xhr.status == 200){
@@ -24,11 +24,11 @@ function handleSubmit(){
 function handleResults(results){
     //display the data in the JSON object from the server
     var display = document.getElementById("display");
-    console.log("results: ");
+    console.log("results: " + results);
     let i;
     for(i = 0; i < results.recipes.length; i++){
         let name = results.recipes[i].recipe_name;
-        let contrib = reults.recipes[i].contributor;
+        let contrib = results.recipes[i].contributor;
         let category = results.recipes[i].category;
         let description = results.recipes[i].description;
         let spices = results.recipes[i].spices;
@@ -39,7 +39,7 @@ function handleResults(results){
         //display the recipe in the page
         display.innerHTML += 
         //the link will be to a single recipe page hopefully
-        //can render with jade like recipes page
+        //can render with jade like recipes pagelo
         `<a>
             <li>
                 <h4>${name}</h4>
