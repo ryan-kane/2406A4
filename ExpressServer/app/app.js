@@ -23,9 +23,9 @@ function writeRecipesToFile(recipes){
     console.log('Writing to ' + filePath + ' complete');
   });
 }
-
+var db = new sqlite3.Database('recipes.db');
 function writeRecipesToDatabase(recipes){
-  var db = new sqlite3.Database('recipes.db');
+  
   db.serialize(function() {
 
      //drop existing table from database
@@ -57,7 +57,6 @@ function writeRecipesToDatabase(recipes){
      });  
 
   });
-  db.close();
 }
 
 
