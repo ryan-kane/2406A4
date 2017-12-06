@@ -25,6 +25,7 @@ function handleResults(results){
     //display the data in the JSON object from the server
     var display = document.getElementById("display");
     console.log("results: " + results);
+    console.log("recipes: " + results.recipes[1]);
     let i;
     for(i = 0; i < results.recipes.length; i++){
         let name = results.recipes[i].recipe_name;

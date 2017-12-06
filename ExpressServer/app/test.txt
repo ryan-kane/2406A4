@@ -1,0 +1,65 @@
+0:  Family Friendly Spaghetti
+1:  Baked French Toast
+2:  GLaDOS Murder Cake
+3:  Russian Salad
+4:  Spicy Butternut Squash Soup
+5:  Super Lemon Blueberry Muffins
+6:  Chocolate Haystacks
+7:  Vegan Banana Muffins
+8:  Carrot Cake
+9:  Yellow Daal (Indian Split Pea Soup)
+10:  Goulash
+11:  Jamaican Jerk Chicken
+12:  Phytoplankton Flambe
+13:  Maple Salmon Recipe
+14:  Quick Chicken And Wine
+15:  Perogies
+16:  Bacon Explosion
+17:  Teriyaki Steak
+18:  Zereshk Polo ba Morgh (Barberry Rice with Chicken)
+19:  Lamb Tagine
+20:  Hot Cinnamon Quinoa
+21:  Orange Romaine Salad Lemon and Pepper Seasoning
+22:  Creole Jambalaya
+23:  Maple Salmon Recipe
+24:  Ranch Burgers
+25:  Peanut and Carrot Soup
+26:  Chocolate Chip Peppermint Cookies
+27:  Homemade Pierogies with Sour Cream
+28:  Power Granola
+29:  Super Tofu Boy
+30:  Peanut and Carrot Soup
+31:  Cola Chicken Wings
+32:  Pineapple Squares
+33:  Mild Shrimp Curry
+34:  Pad Thai
+35:  Pasta Alfredo
+36:  Mrs. Fields Chocolate Chip Cookies
+37:  Penultimate Pancakes
+38:  Polish Cabbage Rolls
+39:  Matar Paneer
+40:  BIGOS
+41:  Lentil Curry
+42:  Banana Muffins.
+43:  Light Tiramisu
+44:  Spaghetti With Peanut Butter Sauce
+45:  Plum Chutney
+46:  Cajun Jambalaya
+47:  Bloody Ceasar
+48:  Grill Master Chicken Wings
+49:  Indian Curry
+50:  Frozen Chocolate-Covered Bananas
+51:  Chocolate Chips Oatmeal Squares
+52:  Spicy Italian Sausage Meatballs Recipe
+53:  Dry Coconut Chicken
+54:  Garlic Lemon Chicken
+55:  Durango Beer Chili
+56:  Creole Jambalaya
+57:  Coronary Thrombosis Fudge
+58:  Froot Loops avec Milk
+59:  Makhani Chicken (Indian Butter Chicken)
+60:  Scrambled eggs with tomatoes
+61:  Carrot Salad
+62:  French Onion Soup
+63:  Squash Soup
+64:  Mrs. Fields Chocolate Chip Cookies
