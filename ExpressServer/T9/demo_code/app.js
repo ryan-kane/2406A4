@@ -76,7 +76,7 @@ app.use(logger('dev'));
 app.get('/index.html', routes.index); 
 app.get('/find', routes.find);
 app.get('/users', routes.users);
-app.get('/song/*', routes.songDetails);
+app.get('/song/*', routes.recipeDetails);
 
 //start server
 app.listen(PORT, err => {

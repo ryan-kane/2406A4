@@ -1,7 +1,4 @@
-/*
-All code in this file was written based on the tutorial 9 code
-http://people.scs.carleton.ca/~comp2406/tutorials/Tutorial09_Express_with_SQLite/demo_code/routes/index.js
-*/ 
+
 var url = require('url');
 var sqlite3 = require('sqlite3').verbose(); //verbose provides more detailed stack trace
 var db = new sqlite3.Database('data/db_1200iRealSongs');
@@ -12,9 +9,9 @@ db.serialize(function(){
 	  //user: frank password: secret2
       var sqlString = "CREATE TABLE IF NOT EXISTS users (userid TEXT PRIMARY KEY, password TEXT)";
       db.run(sqlString);
-      sqlString = "INSERT OR REPLACE INTO users VALUES ('Ryan', 'secret')";
+      sqlString = "INSERT OR REPLACE INTO users VALUES ('ldnel', 'secret')";
       db.run(sqlString);
-      sqlString = "INSERT OR REPLACE INTO users VALUES ('Jackson', 'secreter')";
+      sqlString = "INSERT OR REPLACE INTO users VALUES ('frank', 'secret2')";
       db.run(sqlString);      	  
   });
 
@@ -138,7 +135,7 @@ exports.find = function (request, response){
 	       response.render('songs', {title: 'Songs:', songEntries: rows});
  		});
 }		
-exports.recipeDetails = function(request, response){
+exports.songDetails = function(request, response){
         
 	    var urlObj = parseURL(request, response);
         var songID = urlObj.path; //expected form: /song/235
