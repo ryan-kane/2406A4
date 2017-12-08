@@ -4,7 +4,7 @@ http://people.scs.carleton.ca/~comp2406/tutorials/Tutorial09_Express_with_SQLite
 */ 
 var url = require('url');
 var sqlite3 = require('sqlite3').verbose(); //verbose provides more detailed stack trace
-var db = new sqlite3.Database('data/db_1200iRealSongs');
+var db = new sqlite3.Database('data/recipes.db');
 
 db.serialize(function(){
 	  //make sure a couple of users exist in the database.
@@ -97,7 +97,7 @@ function addFooter(request, response){
 
 exports.index = function (request, response){
         // index.html
-	     response.render('index', { title: 'COMP 2406', body: 'rendered with handlebars'});
+	     response.render('index', { title: 'Recipe Search'});
 }
 
 function parseURL(request, response){
@@ -117,54 +117,71 @@ exports.users = function(request, response){
         // users.html
 		db.all("SELECT userid, password FROM users", function(err, rows){
  	       response.render('users', {title : 'Users:', userEntries: rows});
-		})
+		});
 
 }
 
 exports.find = function (request, response){
         // find.html
-		console.log("RUNNING FIND SONGS");
+		console.log("RUNNING FIND RECIPES");
 		
 		var urlObj = parseURL(request, response);		
-		var sql = "SELECT id, title FROM songs";
+		var sql = "SELECT id, ingredients FROM recipes";
         
-        if(urlObj.query['title']) {
-		    console.log("finding title: " + urlObj.query['title']);
-		    sql = "SELECT id, title FROM songs WHERE title LIKE '%" + 
-			          urlObj.query['title'] + "%'"; 			
-		}		
-
+        if(urlObj.query.ingredients){
+		    console.log("finding ingredients: " + urlObj.query.ingredients);
+		    sql = "SELECT id, ingredients FROM recipes WHERE ingredients LIKE '%" + 
+			          urlObj.query.ingredients + "%'"; 			
+		}
+		var ingRows;
 		db.all(sql, function(err, rows){
-	       response.render('songs', {title: 'Songs:', songEntries: rows});
- 		});
+			ingRows = rows;
+		});
+
+		if(urlObj.query.spices){
+			console.log("finding spices: " + urlObj.query.spices);
+			sql = "SELECT id, spices FROM recipes WHERE ingredients LIKE '%" +
+					urlObj.query.spices + "%'";
+		}
+		var spiceRows;
+		db.all(sql, function(err, rows){
+			console.log(rows)
+			spiceRows = rows;
+		});
+		var rows;
+		if(urlObj.query.spices && urlObj.query.ingredients){
+			for(i = 0; i < spiceRows.length; i++){
+				for(j = 0; j < ingRows.length; j++){
+					if(spiceRows[i].recipe_name == ingRows[j].recipe_name){
+						rows.push(spiceRows[i]);
+						console.log("Match");
+					}
+				}	
+			}
+		}else{
+			if(urlObj.query.spices){
+				rows = spiceRows;
+			}else if(urlObj.query.ingredients){
+				rows = ingRows;
+			}
+		}
+	    return response.render('recipes', {title: 'Recipes:', recipeEntries: rows});
 }		
 exports.recipeDetails = function(request, response){
         
 	    var urlObj = parseURL(request, response);
-        var songID = urlObj.path; //expected form: /song/235
-		songID = songID.substring(songID.lastIndexOf("/")+1, songID.length);
+        var recipeID = urlObj.path; //expected form: /recipe/235
+		recipeID = recipeID.substring(recipeID.lastIndexOf("/")+1, recipeID.length);
 		
-		var sql = "SELECT id, title, composer, key, bars FROM songs WHERE id=" + songID;
+		var sql = "SELECT id, recipe_name, ingredients, spices, description FROM recipes WHERE id=" + recipeID;
         console.log("GET SONG DETAILS: " + songID );
 		
 		db.all(sql, function(err, rows){
-		let song = rows[0];	
-		console.log('Song Details');		
-		console.log(song);
+		let recipe = rows[0];	
+		console.log('Recipe Details');		
+		console.log(recipe);
 		
-		let array2 = song.bars.split("|");
-		var array3 = new Array(20);
-		//YOUR PARSING CODE HERE
-		for (var i = 0; i < array2.length/4; i++){
-			var array4 = new Array(4);
-			for (var j = 0; j < 4; j++){
-				console.log("i " + (i) + " j " + (j) + " chord " + (array2[((i*4)+j)]));
-				array4[j] = array2[((i*4)+j)];
-			}
-			array3[i] = array4;
-		}
-		song.individualBars = array3;
-		response.render('songDetails', {title: 'Songs Details:', song:  song});
+		response.render('songDetails', {title: 'Songs Details:', song:  recipe});
 });
 
 

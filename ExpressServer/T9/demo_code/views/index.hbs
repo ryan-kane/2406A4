@@ -5,6 +5,17 @@
 </head>
 <body>
    <h1>{{title}}</h1>
-   <h2>{{body}}</h2>         
+   <input type="text" id="txt_spices">Spices
+   <input type="text" id="txt_ingredients">Ingredients
+   <button onclick="handleSubmit()">Submit</button>         
+   <script>
+     function handleSubmit(){
+       var ingredientsq = document.getElementById("txt_ingredients").value;
+       var spicesq = document.getElementById("txt_spices").value;
+       var xhr = new XMLHttpRequest();
+       xhr.open('GET', `/find?ingredients=${ingredientsq}&spices=${spicesq}`);
+       xhr.send();
+     }
+   </script>
 </body>
 </html>
